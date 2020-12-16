@@ -1,0 +1,6 @@
+[submodule "libs/corex-utils"]
+	path = libs/corex-utils
+	url = git@github.com:tresmarck/corex-utils.git
+[submodule "libs/corex-math"]
+	path = libs/corex-math
+	url = git@github.com:tresmarck/corex-math.git

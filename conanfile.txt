@@ -1,0 +1,5 @@
+[requires]
+eastl/3.16.05
+
+[generators]
+cmake
