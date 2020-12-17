@@ -4,6 +4,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 pybind11_add_module(pylibbpt
    binding.cpp
+   corex_math.cpp
    ds.cpp
    enums.cpp
    GA.cpp

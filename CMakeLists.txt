@@ -55,5 +55,6 @@ target_link_libraries(libbpt
 
 target_link_libraries(pylibbpt PRIVATE
    libbpt
+   corex-math
    corex-utils
 )

@@ -12,11 +12,12 @@ void createDSBindings(py::module &m)
 {
   py::class_<InputBuilding>(m, "InputBuilding")
     .def(py::init())
-    .def(py::init([](float length, float height) {
-      return new InputBuilding{ length, height };
+    .def(py::init([](float length, float width) {
+      return new InputBuilding{ length, width };
     }))
     .def_readwrite("length", &InputBuilding::length)
     .def_readwrite("width", &InputBuilding::width);
+
   py::class_<Solution>(m, "Solution")
     .def(py::init())
     .def(py::init<const Solution&>())
