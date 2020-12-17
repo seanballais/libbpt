@@ -18,10 +18,10 @@ namespace bpt
     GA();
     eastl::vector<eastl::vector<Solution>> generateSolutions(
       const eastl::vector<InputBuilding>& inputBuildings,
-      const corex::core::NPolygon& boundingArea,
+      const cx::NPolygon& boundingArea,
       const eastl::vector<eastl::vector<float>>& flowRates,
-      eastl::vector<corex::core::NPolygon>& floodProneAreas,
-      eastl::vector<corex::core::NPolygon>& landslideProneAreas,
+      eastl::vector<cx::NPolygon>& floodProneAreas,
+      eastl::vector<cx::NPolygon>& landslideProneAreas,
       const float mutationRate,
       const int populationSize,
       const int numGenerations,
@@ -36,8 +36,8 @@ namespace bpt
       const Solution& solution,
       const eastl::vector<InputBuilding>& inputBuildings,
       const eastl::vector<eastl::vector<float>>& flowRates,
-      const eastl::vector<corex::core::NPolygon>& floodProneAreas,
-      const eastl::vector<corex::core::NPolygon>& landslideProneAreas,
+      const eastl::vector<cx::NPolygon>& floodProneAreas,
+      const eastl::vector<cx::NPolygon>& landslideProneAreas,
       const float floodProneAreaPenalty,
       const float landslideProneAreaPenalty,
       const float buildingDistanceWeight);
@@ -62,46 +62,46 @@ namespace bpt
       int& numOffsprings,
       const int numOffspringsToMake,
       const float mutationRate,
-      const corex::core::NPolygon& boundingArea,
+      const cx::NPolygon& boundingArea,
       const eastl::vector<InputBuilding>& inputBuildings,
       const eastl::vector<eastl::vector<float>>& flowRates,
-      const eastl::vector<corex::core::NPolygon>& floodProneAreas,
-      const eastl::vector<corex::core::NPolygon>& landslideProneAreas,
+      const eastl::vector<cx::NPolygon>& floodProneAreas,
+      const eastl::vector<cx::NPolygon>& landslideProneAreas,
       const float floodProneAreaPenalty,
       const float landslideProneAreaPenalty,
       const float buildingDistanceWeight);
     Solution
     generateRandomSolution(const eastl::vector<InputBuilding>& inputBuildings,
-                           const corex::core::NPolygon& boundingArea);
+                           const cx::NPolygon& boundingArea);
     eastl::array<Solution, 2>
     crossoverSolutions(const Solution& solutionA,
                        const Solution& solutionB,
-                       const corex::core::NPolygon& boundingArea,
+                       const cx::NPolygon& boundingArea,
                        const eastl::vector<InputBuilding>& inputBuildings);
     void mutateSolution(Solution& solution,
-                        const corex::core::NPolygon& boundingArea,
+                        const cx::NPolygon& boundingArea,
                         const eastl::vector<InputBuilding>& inputBuildings);
     void applyBuddyBuddyMutation(
         Solution& solution,
-        const corex::core::NPolygon& boundingArea,
+        const cx::NPolygon& boundingArea,
         const eastl::vector<InputBuilding>& inputBuildings);
     void applyShakingMutation(
         Solution& solution,
-        const corex::core::NPolygon& boundingArea,
+        const cx::NPolygon& boundingArea,
         const eastl::vector<InputBuilding>& inputBuildings);
     void applyJiggleMutation(
         Solution& solution,
-        const corex::core::NPolygon& boundingArea,
+        const cx::NPolygon& boundingArea,
         const eastl::vector<InputBuilding>& inputBuildings);
     bool isSolutionFeasible(const Solution& solution,
-                            const corex::core::NPolygon& boundingArea,
+                            const cx::NPolygon& boundingArea,
                             const eastl::vector<InputBuilding>& inputBuildings);
     bool doesSolutionHaveNoBuildingsOverlapping(
         const Solution& solution,
         const eastl::vector<InputBuilding>& inputBuildings);
     bool areSolutionBuildingsWithinBounds(
         const Solution& solution,
-        const corex::core::NPolygon& boundingArea,
+        const cx::NPolygon& boundingArea,
         const eastl::vector<InputBuilding>& inputBuildings);
     int currRunGenerationNumber;
     eastl::vector<float> recentRunAvgFitnesses;

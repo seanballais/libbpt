@@ -6,4 +6,8 @@ pybind11_add_module(pylibbpt
    binding.cpp
    ds.cpp
    enums.cpp
+   GA.cpp
+   # So that CLion and IDEs that have CMake integration will know that the
+   # header-only files are part of the project.
+   eastl.hpp
 )
