@@ -12,3 +12,7 @@ endif()
 if (NOT TARGET corex-utils)
     add_subdirectory(corex-utils/)
 endif()
+
+if (NOT TARGET pybind11_headers)
+    add_subdirectory(pybind11/)
+endif()

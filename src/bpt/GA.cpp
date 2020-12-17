@@ -11,9 +11,7 @@
 #include <corex/math.hpp>
 #include <corex/utils.hpp>
 
-#include <bpt/ds/InputBuilding.hpp>
-#include <bpt/ds/Solution.hpp>
-
+#include <bpt/ds.hpp>
 #include <bpt/GA.hpp>
 
 namespace bpt

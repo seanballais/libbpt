@@ -7,9 +7,8 @@
 
 #include <corex/math.hpp>
 
+#include <bpt/ds.hpp>
 #include <bpt/SelectionType.hpp>
-#include <bpt/ds/InputBuilding.hpp>
-#include <bpt/ds/Solution.hpp>
 
 namespace bpt
 {
@@ -18,59 +17,59 @@ namespace bpt
   public:
     GA();
     eastl::vector<eastl::vector<Solution>> generateSolutions(
-        const eastl::vector<InputBuilding>& inputBuildings,
-        const corex::core::NPolygon& boundingArea,
-        const eastl::vector<eastl::vector<float>>& flowRates,
-        eastl::vector<corex::core::NPolygon>& floodProneAreas,
-        eastl::vector<corex::core::NPolygon>& landslideProneAreas,
-        const float mutationRate,
-        const int populationSize,
-        const int numGenerations,
-        const int tournamentSize,
-        const int numPrevGenOffsprings,
-        const float floodProneAreaPenalty,
-        const float landslideProneAreaPenalty,
-        const float buildingDistanceWeight,
-        const bool isLocalSearchEnabled,
-        const SelectionType selectionType);
+      const eastl::vector<InputBuilding>& inputBuildings,
+      const corex::core::NPolygon& boundingArea,
+      const eastl::vector<eastl::vector<float>>& flowRates,
+      eastl::vector<corex::core::NPolygon>& floodProneAreas,
+      eastl::vector<corex::core::NPolygon>& landslideProneAreas,
+      const float mutationRate,
+      const int populationSize,
+      const int numGenerations,
+      const int tournamentSize,
+      const int numPrevGenOffsprings,
+      const float floodProneAreaPenalty,
+      const float landslideProneAreaPenalty,
+      const float buildingDistanceWeight,
+      const bool isLocalSearchEnabled,
+      const SelectionType selectionType);
     double getSolutionFitness(
-        const Solution& solution,
-        const eastl::vector<InputBuilding>& inputBuildings,
-        const eastl::vector<eastl::vector<float>>& flowRates,
-        const eastl::vector<corex::core::NPolygon>& floodProneAreas,
-        const eastl::vector<corex::core::NPolygon>& landslideProneAreas,
-        const float floodProneAreaPenalty,
-        const float landslideProneAreaPenalty,
-        const float buildingDistanceWeight);
+      const Solution& solution,
+      const eastl::vector<InputBuilding>& inputBuildings,
+      const eastl::vector<eastl::vector<float>>& flowRates,
+      const eastl::vector<corex::core::NPolygon>& floodProneAreas,
+      const eastl::vector<corex::core::NPolygon>& landslideProneAreas,
+      const float floodProneAreaPenalty,
+      const float landslideProneAreaPenalty,
+      const float buildingDistanceWeight);
     int getCurrentRunGenerationNumber();
     eastl::vector<float> getRecentRunAverageFitnesses();
     eastl::vector<float> getRecentRunBestFitnesses();
     eastl::vector<float> getRecentRunWorstFitnesses();
   private:
     eastl::array<Solution, 2> selectParents(
-        const eastl::vector<Solution>& population,
-        const int& tournamentSize,
-        const SelectionType& selectionType);
+      const eastl::vector<Solution>& population,
+      const int& tournamentSize,
+      const SelectionType& selectionType);
     eastl::array<Solution, 2> runRouletteWheelSelection(
-        const eastl::vector<Solution>& population);
+      const eastl::vector<Solution>& population);
     eastl::array<Solution, 2> runTournamentSelection(
-        const eastl::vector<Solution>& population,
-        const int& tournamentSize);
+      const eastl::vector<Solution>& population,
+      const int& tournamentSize);
     void makeTwoParentsBreed(
-        const Solution& parentA,
-        const Solution& parentB,
-        eastl::vector<Solution>& offsprings,
-        int& numOffsprings,
-        const int numOffspringsToMake,
-        const float mutationRate,
-        const corex::core::NPolygon& boundingArea,
-        const eastl::vector<InputBuilding>& inputBuildings,
-        const eastl::vector<eastl::vector<float>>& flowRates,
-        const eastl::vector<corex::core::NPolygon>& floodProneAreas,
-        const eastl::vector<corex::core::NPolygon>& landslideProneAreas,
-        const float floodProneAreaPenalty,
-        const float landslideProneAreaPenalty,
-        const float buildingDistanceWeight);
+      const Solution& parentA,
+      const Solution& parentB,
+      eastl::vector<Solution>& offsprings,
+      int& numOffsprings,
+      const int numOffspringsToMake,
+      const float mutationRate,
+      const corex::core::NPolygon& boundingArea,
+      const eastl::vector<InputBuilding>& inputBuildings,
+      const eastl::vector<eastl::vector<float>>& flowRates,
+      const eastl::vector<corex::core::NPolygon>& floodProneAreas,
+      const eastl::vector<corex::core::NPolygon>& landslideProneAreas,
+      const float floodProneAreaPenalty,
+      const float landslideProneAreaPenalty,
+      const float buildingDistanceWeight);
     Solution
     generateRandomSolution(const eastl::vector<InputBuilding>& inputBuildings,
                            const corex::core::NPolygon& boundingArea);

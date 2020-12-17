@@ -4,3 +4,6 @@
 [submodule "libs/corex-math"]
 	path = libs/corex-math
 	url = git@github.com:tresmarck/corex-math.git
+[submodule "libs/pybind11"]
+	path = libs/pybind11
+	url = https://github.com/pybind/pybind11.git

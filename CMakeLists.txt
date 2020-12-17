@@ -28,18 +28,32 @@ set(CMAKE_CXX_STANDARD          17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
-# Mhmm. We're sticking with just Clang. Note that -stdlib is a Clang-only flag.
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -stdlib=libc++")
+# Since we're linking the binding against static libraries, we have
+# to compile those libraries with -fPIC. We're also sticking with just Clang.
+# Note that -stdlib is a Clang-only flag.
+add_compile_options(-fPIC -stdlib=libc++)
+
+# We need to make sure that the linker links libc++ instead of the
+# default standard library.
+add_link_options(-stdlib=libc++)
 
 include("${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
 conan_basic_setup()
 
 add_subdirectory(libs/)
 add_subdirectory(src/)
+
 target_include_directories(libbpt PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+
+add_subdirectory(bindings/) # TODO: Add option to not build bindings.
 
 target_link_libraries(libbpt
     corex-math
     corex-utils
     ${CONAN_LIBS}
+)
+
+target_link_libraries(pylibbpt PRIVATE
+   libbpt
+   corex-utils
 )
